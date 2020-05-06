@@ -1,11 +1,4 @@
 #include <cassert>
- 
-struct SYM
-{
-	char ch;
-	int prior;
-	SYM* next;
-};
 
 template<typename T>
 class TPQueue
@@ -112,3 +105,10 @@ void TPQueue<T>::print() const
 	}
 	std::cout << std::endl;
 }
+
+struct SYM
+{
+	char ch;
+	int prior;
+	SYM* next;
+};
