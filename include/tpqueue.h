@@ -101,7 +101,7 @@ T TPQueue<T>::pop()
 }
 
 template<typename T>
-void LListQueue<T>::print() const
+void TPQueue<T>::print() const
 {
     ITEM* temp = head;
     while (temp)
