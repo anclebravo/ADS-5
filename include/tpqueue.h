@@ -44,12 +44,9 @@ void TPQueue<T>::push(const T& inf)
     }
     else if (tail->data.prior >= inf.prior)
     {
-
         if (tail->data.prior == inf.prior && tail->data.ch == inf.ch)
         {
-
             tail->data = inf;
-
         }
         else
         {
@@ -62,7 +59,6 @@ void TPQueue<T>::push(const T& inf)
     }
     else
     {
-
         if (tail->data.prior < inf.prior)
         {
             if (inf.prior > head->data.prior)
@@ -73,9 +69,7 @@ void TPQueue<T>::push(const T& inf)
                 head = tmp;
             }
             else
-
                 if (inf.prior == head->data.prior)
-
                     if (inf.ch == head->data.ch)
                         head->data = inf;
                     else
@@ -84,9 +78,7 @@ void TPQueue<T>::push(const T& inf)
                         u = create(inf);
                         u->next = head->next;
                         head->next = u;
-
                     }
-
                 else
                 {
                     if (inf.prior < head->data.prior)
@@ -97,11 +89,6 @@ void TPQueue<T>::push(const T& inf)
                         head->next = u;
                     }
                 }
-
-
-
-
-
         }
     }
 }
@@ -117,7 +104,6 @@ T TPQueue<T>::pop()
         head = temp;
         return data;
     }
-
 }
 template<typename T>
 void TPQueue<T>::print() const	
@@ -134,7 +120,6 @@ void TPQueue<T>::print() const
         std::cout << std::endl;	    std::cout << std::endl;
     }
 }
-
 struct SYM
 {
     char ch;
