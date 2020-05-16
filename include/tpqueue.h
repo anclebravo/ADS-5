@@ -139,6 +139,6 @@ struct SYM
 {
 	char ch;
 	int  prior;
-}; 
+
 	SYM* next;
 };
