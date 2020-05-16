@@ -4,6 +4,8 @@ template<typename T>
 class TPQueue
 {
   // Сюда помещается описание структуры "Очередь с приоритетами"
+	
+  T data;	
 };
 
 
