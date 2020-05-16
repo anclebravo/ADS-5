@@ -1,10 +1,8 @@
-#include <cassert>
-
 template<typename T>
 class TPQueue
 {
   // Сюда помещается описание структуры "Очередь с приоритетами"
-    struct ITEM
+  struct ITEM
     {
         T data;
         ITEM* next;
@@ -99,11 +97,6 @@ void TPQueue<T>::push(const T& inf)
                         head->next = u;
                     }
                 }
-
-
-
-
-
         }
     }
 }
@@ -142,7 +135,5 @@ struct SYM
 	char ch;
 	int  prior;
 }; 
-    char ch;
-    int prior;
-    SYM* next;
+	SYM* next;
 };
