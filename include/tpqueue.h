@@ -1,9 +1,15 @@
-#include <cassert>
- 
+#pragma once
+
+struct SYM
+{
+    char ch;
+    int  prior;
+};
+
 template<typename T>
 class TPQueue
 {
-   struct ITEM
+    struct ITEM
     {
         T data;
         ITEM* next;
@@ -20,6 +26,7 @@ private:
     ITEM* head;
     ITEM* tail;
 };
+
 template<typename T>
 typename TPQueue<T>::ITEM* TPQueue<T>::create(const T& data)
 {
@@ -115,10 +122,3 @@ void TPQueue<T>::print() const
     std::cout << std::endl;
 }
 
-
-
-struct SYM
-{
-	char ch;
-	int  prior;
-};
