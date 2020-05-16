@@ -1,134 +1,130 @@
 #include <cassert>
 
-template<typename T>
-class TPQueue
-{
-// Сюда помещается описание структуры "Очередь с приоритетами"
-struct ITEM
-{
-T data;
-ITEM* next;
-};
-public:
-TPQueue() :head(nullptr), tail(nullptr) {}
-~TPQueue();
-void push(const T&);
-T pop();
-void print() const;
-private:
-TPQueue::ITEM* create(const T&);
-ITEM* head;
-ITEM* u;
-ITEM* tail;
-};
-template<typename T>
-typename TPQueue<T>::ITEM* TPQueue<T>::create(const T& data)
-{
-ITEM* item = new ITEM;
-item->data = data;
-item->next = nullptr;
-return item;
-}
-template<typename T>
-TPQueue<T>::~TPQueue()
-{
-while (head)
-pop();
-}
-template<typename T>
-void TPQueue<T>::push(const T& inf)
-{
-if (head == nullptr)
-{
-head = create(inf);
-u = head;
-tail = head;
-}
-else if (tail->data.prior >= inf.prior)
-{
+ #pragma once
 
-if (tail->data.prior == inf.prior && tail->data.ch == inf.ch)
-{
-tail->data = inf;
-}
-else
-{
-if (tail->data.prior >= inf.prior && tail->data.ch != inf.ch)
-{
-tail->next = create(inf);
-tail = tail->next;
-}
-}
-}
-else
-{
-if (tail->data.prior < inf.prior)
-{
-if (inf.prior > head->data.prior)
-{
-ITEM* tmp = NULL;
-tmp = create(inf);
-tmp->next = head;
-head = tmp;
-}
-else
+ struct SYM
+ {
+     char ch;
+     int  prior;
+ };
 
-if (inf.prior == head->data.prior)
+ template<typename T>
+ class TPQueue
+ {
+   // Сюда помещается описание структуры "Очередь с приоритетами"
+     struct ITEM
+     {
+         T data;
+         ITEM* next;
+         ITEM* pred;
+     };
+ public:
+     TPQueue() :head(nullptr), tail(nullptr) {}
+     ~TPQueue();
+     void push(const T&);
+     T pop();
+     void print() const;
+ private:
+     TPQueue::ITEM* create(const T&);
+     ITEM* head;
+     ITEM* tail;
+ };
 
-if (inf.ch == head->data.ch)
-head->data = inf;
-else
-{
-ITEM* u = nullptr;
-u = create(inf);
-u->next = head->next;
-head->next = u;
-}
+ template<typename T>
+ typename TPQueue<T>::ITEM* TPQueue<T>::create(const T& data)
+ {
+     ITEM* item = new ITEM;
+     item->data = data;
+     item->next = nullptr;
+     return item;
+ }
 
-else
-{
-if (inf.prior < head->data.prior)
-{
-ITEM* u = nullptr;
-u = create(inf);
-u->next = head->next;
-head->next = u;
-}
-}
-}
-}
-}
+ struct SYM
+ template<typename T>
+ TPQueue<T>::~TPQueue()
+ {
+     while (head)
+         pop();
+ }
 
-template<typename T>
-T TPQueue<T>::pop()
-{
-if (head)
-{
-ITEM* temp = head->next;
-T data = head->data;
-delete head;
-head = temp;
-return data;
-}
-}
-template<typename T>
-void TPQueue<T>::print() const
-{
-{
-ITEM* temp = head;
-while (temp)
-{
-{
-std::cout « temp->data « " ";
-temp = temp->next;
-}
-}
-std::cout « std::endl;
-}
-}
-struct SYM
-{
-char ch;
-int prior;
-};
-SYM* next;
+ template<typename T>
+ void TPQueue<T>::push(const T& dat)
+ {
+     if (head == nullptr)
+     {
+         head = create(dat);
+         tail = head;
+     }
+     else if (tail->data.prior >= dat.prior)
+     {
+         if (tail->data.ch == dat.ch)
+             tail->data = dat;
+         else
+         {
+             tail->next = create(dat);
+             tail->next->pred = tail;
+             tail = tail->next;
+         }
+     }
+     else if (head == tail)
+     {
+         tail->pred = create(dat);
+         head = tail->pred;
+         head->next = tail;
+     }
+     else
+     {
+         ITEM* tmp = tail;
+         while (tmp != head && tmp->data.prior < dat.prior)
+         {
+             tmp = tmp->pred;
+         }
+         if (tmp->data.prior == dat.prior)
+         {
+             ITEM* cell = new ITEM;
+             cell->next = tmp->next;
+             cell->pred = tmp;
+             cell->data = dat;
+             tmp->next->pred = cell;
+             tmp->next = cell;
+         }
+         if (tmp == head && tmp->data.prior < dat.prior)
+         {
+             head->pred = create(dat);
+             head = head->pred;
+             head->next = tmp;
+         }
+     }
+ }
+
+ template<typename T>
+ T TPQueue<T>::pop()
+ {
+     if (head)
+     {
+         ITEM* temp = head->next;
+         T data = head->data;
+         delete head;
+         head = temp;
+         return data;
+     }
+     else
+     {
+         return SYM{'\0', 0};
+     }
+ }
+
+ template<typename T>
+ void TPQueue<T>::print() const
+ {
+ 	char ch;
+ 	int  prior;
+ }; 
+     ITEM* temp = head;
+     while (temp)
+     {
+         std::cout << temp->data.ch << " ";
+         temp = temp->next;
+     }
+     std::cout << std::endl;
+ }
