@@ -1,5 +1,3 @@
-#include <cassert>
-
 #pragma once
 
 struct SYM
@@ -117,12 +115,4 @@ void TPQueue<T>::print() const
         temp = temp->next;
     }
     std::cout << std::endl;
-};
-
 }
-
-struct SYM
-{
-	char ch;
-	int  prior;
-};
