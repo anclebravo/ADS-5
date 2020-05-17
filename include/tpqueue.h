@@ -16,7 +16,6 @@ public:
     void push(const T&);
     T pop();
     void print() const;
-
 private:
     TPQueue::ITEM* create(const T&);
     ITEM* head;
@@ -98,7 +97,6 @@ T TPQueue<T>::pop()
         return data;
     }
 }
-
 template<typename T>
 void TPQueue<T>::print() const
 {
@@ -110,8 +108,6 @@ void TPQueue<T>::print() const
     }
     std::cout << std::endl;
 }
-
-
 struct SYM
 {
 	char ch;
