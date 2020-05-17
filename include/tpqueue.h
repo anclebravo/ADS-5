@@ -3,7 +3,6 @@
 template<typename T>
 class TPQueue
 {
-// Сюда помещается описание структуры "Очередь с приоритетами"
 struct ITEM
 {
 T data;
