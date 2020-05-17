@@ -99,6 +99,6 @@ std::cout « std::endl;
 
 struct SYM
 {
-char ch;
-int  prior;
+	char ch;
+	int  prior;
 };
