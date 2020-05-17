@@ -3,6 +3,7 @@
 template<typename T>
 class TPQueue
 {
+  // Сюда помещается описание структуры "Очередь с приоритетами"
 struct ITEM
 {
 T data;
@@ -98,6 +99,6 @@ std::cout « std::endl;
 
 struct SYM
 {
-char ch;
-int prior;
+	char ch;
+	int  prior;
 };
