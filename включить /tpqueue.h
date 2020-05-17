@@ -21,7 +21,6 @@ class TPQueue
      ITEM* head;
      ITEM* tail;
  };
-
  template<typename T>
  typename TPQueue<T>::ITEM* TPQueue<T>::create(const T& data)
  {
@@ -40,7 +39,6 @@ class TPQueue
  template<typename T>
  void TPQueue<T>::push(const T& data)
  {
-
      if (tail && head)
      {
          ITEM* begin = head;
@@ -56,16 +54,13 @@ class TPQueue
              newItem->next = begin->next;
              begin->next = newItem;
          }
-
      }
-
      else
      {
          head = create(data);
          head->next = tail;
          tail = head;
      }
-
  }
  template<typename T>
  T TPQueue<T>::pop()
@@ -95,12 +90,10 @@ class TPQueue
      }
      std::cout << std::endl;
  }
-
 };
-
-
 struct SYM
 {
 	char ch;
 	int  prior;
+};
 };
