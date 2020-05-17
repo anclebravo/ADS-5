@@ -1,27 +1,29 @@
 #include <cassert>
- 
+
 template<typename T>
 class TPQueue
 {
-  // Сюда помещается описание структуры "Очередь с приоритетами"
-struct ITEM
-{
-       T data;
-       ITEM* next;
-       ITEM* pred;
-};
+    struct ITEM
+    {
+        T data;
+        ITEM* next;
+        ITEM* pred;
+    };
+    
 public:
     TPQueue() :head(nullptr), tail(nullptr) {}
     ~TPQueue();
     void push(const T&);
     T pop();
     void print() const;
+    
 private:
     TPQueue::ITEM* create(const T&);
     ITEM* head;
     ITEM* tail;
 };
-emplate<typename T>
+
+template<typename T>
 typename TPQueue<T>::ITEM* TPQueue<T>::create(const T& data)
 {
     ITEM* item = new ITEM;
@@ -30,12 +32,14 @@ typename TPQueue<T>::ITEM* TPQueue<T>::create(const T& data)
     item->pred = nullptr;
     return item;
 }
+
 template<typename T>
 TPQueue<T>::~TPQueue()
 {
     while (head)
         pop();
 }
+
 template<typename T>
 void TPQueue<T>::push(const T& dat)
 {
@@ -64,20 +68,22 @@ void TPQueue<T>::push(const T& dat)
     else
     {
         ITEM* tmp = tail;
-        while (tmp != head && tmp->data.prior < dat.prior)
+        while ((tmp != head) && (tmp->data.prior < dat.prior))
         {
             tmp = tmp->pred;
         }
         if (tmp->data.prior == dat.prior)
         {
             ITEM* cell = new ITEM;
+            
             cell->next = tmp->next;
             cell->pred = tmp;
             cell->data = dat;
+            
             tmp->next->pred = cell;
             tmp->next = cell;
         }
-        if (tmp == head && tmp->data.prior < dat.prior)
+        if ((tmp == head) && (tmp->data.prior < dat.prior))
         {
             head->pred = create(dat);
             head = head->pred;
@@ -85,6 +91,7 @@ void TPQueue<T>::push(const T& dat)
         }
     }
 }
+
 template<typename T>
 T TPQueue<T>::pop()
 {
@@ -97,6 +104,7 @@ T TPQueue<T>::pop()
         return data;
     }
 }
+
 template<typename T>
 void TPQueue<T>::print() const
 {
@@ -108,8 +116,9 @@ void TPQueue<T>::print() const
     }
     std::cout << std::endl;
 }
+
 struct SYM
-{
-	char ch;
-	int  prior;
+{    
+    char ch;
+    int  prior;
 };
