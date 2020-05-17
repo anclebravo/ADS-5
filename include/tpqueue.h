@@ -5,7 +5,7 @@ class TPQueue
 {
   // Сюда помещается описание структуры "Очередь с приоритетами"
 	
-    struct ITEM
+   struct ITEM
     {
         T data;
         ITEM * next;
