@@ -8,7 +8,6 @@ class TPQueue
 {
     T data;
     ITEM* next;
-
 };
  public:
      TPQueue() :head(nullptr), tail(nullptr) {}
@@ -27,7 +26,6 @@ class TPQueue
      ITEM* item = new ITEM;
      item->data = data;
      item->next = nullptr;
-
      return item;
  }
  template<typename T>
