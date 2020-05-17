@@ -99,3 +99,4 @@ void TPQueue<T>::print() const
         temp = temp->next;
     }
     std::cout << std::endl;
+}
