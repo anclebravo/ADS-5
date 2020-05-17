@@ -138,10 +138,7 @@ void TPQueue<T>::print() const
 }
 
 struct SYM
-{
-	char ch;
-	int  prior;
-}; 
+{ 
     char ch;
     int prior;
     SYM* next;
