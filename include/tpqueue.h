@@ -1,6 +1,12 @@
 #include <cassert>
 #pragma once
 
+struct SYM
+{
+    char ch;
+    int  prior;
+};
+
 template<typename T>
 class TPQueue
 {
@@ -116,9 +122,3 @@ void TPQueue<T>::print() const
     }
     std::cout << std::endl;
 }
-
-struct SYM
-{
-    char ch;
-    int  prior;
-};
